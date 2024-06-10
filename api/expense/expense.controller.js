@@ -53,5 +53,6 @@ export async function removeExpense(req, res) {
     } catch (err) {
         logger.error('Failed to remove expense', err)
         res.status(500).send({ err: 'Failed to remove expense' })
+        throw err
     }
 }
