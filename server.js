@@ -36,7 +36,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 import { expenseRoutes } from './api/expense/expense.routes.js'
+import { authRoutes } from './api/auth/auth.routes.js'
+
 app.use('/api/expense', expenseRoutes)
+app.use('/api/auth', authRoutes)
 
 
 app.get('/**', (req, res) => {

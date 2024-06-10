@@ -1,12 +1,8 @@
-
-import fs from 'fs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
-import { utilService } from '../../services/util.service.js'
 import { dbService } from '../../services/db.service.js'
 import { logger } from '../../services/logger.service.js'
-const expenses = utilService.readJsonFile('data/expense.json')
 
 const DB_NAME = 'expense'
 
@@ -81,6 +77,4 @@ async function remove(expenseId) {
     }
 }
 
-function _saveToysToFile() {
-    fs.writeFileSync('data/expense.json', JSON.stringify(expenses, null, 2));
-}
+
