@@ -1,7 +1,7 @@
 # Expense Tracker App
 
 Expense Tracker App provide a full stuck solution for tracking user-friendly interface.
-[Here is a link to my app!](#https://expense-tracker-vdps.onrender.com)
+[Here is a link to my app!](https://expense-tracker-vdps.onrender.com)
 
 ![alt text](https://res.cloudinary.com/djyjaumko/image/upload/v1718047333/expenseTracker_ftmsa5.png)
  
