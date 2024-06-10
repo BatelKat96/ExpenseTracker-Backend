@@ -1,0 +1,26 @@
+[
+  {
+    "amount": "100",
+    "category": "Food",
+    "date": 1709970490000,
+    "notes": ""
+  },
+  {
+    "amount": "50",
+    "category": "Transport",
+    "date": 1709106490000,
+    "notes": "To my mother"
+  },
+  {
+    "amount": "32",
+    "category": "Utilities",
+    "date": 1709128090000,
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    "amount": "252",
+    "category": "Food",
+    "date": 1709049730000,
+    "notes": "For Ally birthday"
+  }
+]

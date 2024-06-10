@@ -1,7 +1,14 @@
 
 import fs from 'fs'
+import mongodb from 'mongodb'
+const { ObjectId } = mongodb
+
 import { utilService } from '../../services/util.service.js'
+import { dbService } from '../../services/db.service.js'
+import { logger } from '../../services/logger.service.js'
 const expenses = utilService.readJsonFile('data/expense.json')
+
+const DB_NAME = 'expense'
 
 export const expenseService = {
     query,
@@ -11,34 +18,67 @@ export const expenseService = {
     remove
 }
 
-function query(filterBy) {
-    return Promise.resolve(expenses)
+async function query(filterBy) {
+    try {
+        const collection = await dbService.getCollection(DB_NAME)
+        const expenses = await collection.find().toArray()
+        return expenses
+    } catch (err) {
+        logger.error('cannot find expenses', err)
+        throw err
+    }
 }
 
-function getById(expenseId) {
-    const expense = expenses.find(expense => expense._id === expenseId)
-    return Promise.resolve(expense)
+async function getById(expenseId) {
+    try {
+        const collection = await dbService.getCollection(DB_NAME)
+        const expense = await collection.findOne({ _id: new ObjectId(expenseId) })
+        return expense
+    } catch (err) {
+        logger.error('cannot find expense', err)
+        throw err
+    }
 }
 
-function add(expense) {
-    expense._id = utilService.makeId()
-    expenses.unshift(expense)
-    _saveToysToFile()
-    return Promise.resolve(expense)
+async function add(expense) {
+    try {
+        const collection = await dbService.getCollection(DB_NAME)
+        await collection.insertOne(expense)
+        return expense
+    } catch (err) {
+        logger.error('cannot insert expense', err)
+        throw err
+    }
 }
 
-function update(expense) {
-    const idx = expenses.findIndex(currExpense => currExpense._id === expense._id)
-    expenses[idx] = { ...expenses[idx], ...expense }
-    _saveToysToFile()
-    return Promise.resolve(expense)
+async function update(expense) {
+    try {
+        const expenseToSave = {
+            amount: expense.amount,
+            category: expense.category,
+            date: expense.date,
+            notes: expense.notes
+        }
+        const collection = await dbService.getCollection(DB_NAME)
+        await collection.updateOne(
+            { _id: new ObjectId(expense._id) },
+            { $set: expenseToSave })
+        return expense
+    } catch (err) {
+        logger.error('cannot update expense', err)
+        throw err
+    }
 }
 
-function remove(expenseId) {
-    const idx = expenses.findIndex(expense => expense._id === expenseId)
-    expenses.splice(idx, 1)
-    _saveToysToFile()
-    return Promise.resolve(expenseId)
+async function remove(expenseId) {
+    try {
+        const collection = await dbService.getCollection(DB_NAME)
+        const expense = await collection.deleteOne({ _id: new ObjectId(expenseId) })
+        return expense
+    } catch (err) {
+        logger.error('cannot find expense', err)
+        throw err
+    }
 }
 
 function _saveToysToFile() {
