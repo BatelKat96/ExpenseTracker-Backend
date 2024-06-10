@@ -1,0 +1,21 @@
+{
+  "name": "expensetracker-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --ignore \"./data\" server.js",
+    "start": "node server.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cryptr": "^6.3.0",
+    "express": "^4.19.2",
+    "mongodb": "^6.7.0"
+  }
+}
