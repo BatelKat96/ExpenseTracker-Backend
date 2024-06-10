@@ -35,6 +35,8 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
+import { expenseRoutes } from './api/expense/expense.routes.js'
+app.use('/api/expense', expenseRoutes)
 
 
 app.get('/**', (req, res) => {

@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "hwqeU",
+    "amount": "100",
+    "category": "Food",
+    "date": 1709970490000,
+    "notes": ""
+  },
+  {
+    "_id": "RfsGY",
+    "amount": "50",
+    "category": "Transport",
+    "date": 1709106490000,
+    "notes": "To my mother"
+  },
+  {
+    "_id": "FwL2B",
+    "amount": "32",
+    "category": "Utilities",
+    "date": 1709128090000,
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  {
+    "_id": "h34eU",
+    "amount": "252",
+    "category": "Food",
+    "date": 1709049730000,
+    "notes": "For Ally birthday"
+  }
+]
