@@ -18,8 +18,6 @@ export async function login(req, res) {
 }
 
 export async function signup(req, res) {
-    console.log('x:')
-
     try {
         const { username, password, fullname } = req.body
         const account = await authService.signup(username, password, fullname)
